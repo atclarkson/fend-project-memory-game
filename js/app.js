@@ -37,10 +37,42 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+// Hold a list of all cards
 let allCards = document.querySelectorAll('.card');
+// Array to hold currently open cards
+let openCards = [];
 
+// Create showCard function
+let showCard = function() {
+  this.classList.toggle('show');
+  this.classList.toggle('open');
+  this.classList.toggle('locked');
+};
+
+// Loop through and apply an event listender to each card
 allCards.forEach(function(card) {
-  card.addEventListener('click', function(e) {
-    card.classList.add('show', 'open');
-  })
+  card.addEventListener('click', showCard);
 });
+
+
+
+//   card.addEventListener('click', function(e) {
+//     // SHow a card when it is clickes
+//     card.classList.add('show', 'open');
+//     console.log(card);
+//     openCards.push(card);
+//     // Check if 2 cards have been clicked
+//     if (openCards.length === 2) {
+//       console.log(openCards[0].childNodes[1]);
+//       console.log(openCards[1].childNodes[1]);
+//       //Check if the two clicked cards are equal
+//       if (openCards[0].innerHTML === openCards[1].innerHTML) {
+//         openCards.[0].classList.add('match'));
+//         console.log("fire");
+//       }
+//       //openCards.forEach(card.classList.remove('show', 'open'));
+//       openCards = [];
+//       console.log(openCards);
+//     }
+//   })
+// });
