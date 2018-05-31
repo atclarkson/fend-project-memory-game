@@ -1,10 +1,9 @@
 // Hold a list of all cards
-let allCards = document.querySelectorAll('.card');
-console.log(allCards);
 let card = document.getElementsByClassName("card");
-let cards = [...card]
-console.log(card);
-console.log(cards);
+let allCards = [...card]
+// deck of all cards in game
+const deck = document.querySelector(".deck");
+
 
 /*
  * Display the cards on the page
@@ -30,7 +29,9 @@ function shuffle(array) {
 
 // Get list of Star classes
 let stars = document.getElementsByClassName('star');
-console.log(stars);
+
+// Star rating function based on ratio of correct matches to incorrect matches.
+// This is a mess and should be refactored at some point.
 function starRating(num) {
   if (num > .50) {
     //3 stars
@@ -81,10 +82,32 @@ function starRating(num) {
 // Array to hold currently open cards
 var openCards = [];
 // Mover counter
-let numMoves = 0;
+let movesCounter = 0;
 let correctMoves = 0;
-starRating(correctMoves / numMoves);
-console.log(correctMoves / numMoves);
+
+document.body.onload = startGame();
+
+function startGame() {
+  // Shuffle the deck
+  allCards = shuffle(allCards);
+  // remove all exisiting classes from each card
+  for (var i = 0; i < allCards.length; i++){
+      deck.innerHTML = '';
+      [].forEach.call(allCards, function(item) {
+          deck.appendChild(item);
+      });
+      allCards[i].classList.remove('show', 'open', 'match', 'disabled');
+  }
+  // reset open cards Array
+  openCards = [];
+  // reset moves counter to 0
+  movesCounter = 0;
+  correctMoves = 0;
+  // reset star starRating
+  starRating(100);
+
+}
+
 
 // matched cards
 let matched = function() {
@@ -94,6 +117,7 @@ let matched = function() {
   correctMoves++;
   openCards = [];
 }
+
 
 // unmatched cards
 let unmatched = function() {
@@ -109,7 +133,7 @@ let unmatched = function() {
 
 // Update move counter
 let updateMoves = function() {
-  document.getElementById('moves').innerHTML = numMoves;
+  document.getElementById('moves').innerHTML = movesCounter;
 }
 
 
@@ -122,10 +146,10 @@ let openedCards = function() {
     } else {
       unmatched();
     }
-    numMoves++;
+    movesCounter++;
   }
   updateMoves();
-  starRating(correctMoves / numMoves);
+  starRating(correctMoves / movesCounter);
 }
 
 // Create showCard function
