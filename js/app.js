@@ -40,7 +40,31 @@ function shuffle(array) {
 // Hold a list of all cards
 let allCards = document.querySelectorAll('.card');
 // Array to hold currently open cards
-let openCards = [];
+var openCards = [];
+
+let openedCards = function() {
+  openCards.push(this);
+  if (openCards.length == 2) {
+    if (openCards[0].innerHTML == openCards[1].innerHTML) {
+      console.log("match");
+      openCards[0].classList.add("match");
+      openCards[1].classList.add("match");
+      openCards = [];
+    } else {
+      console.log("No Match");
+      openCards[0].classList.add("unmatched");
+      openCards[1].classList.add("unmatched");
+      setTimeout(function(){
+        openCards[0].classList.remove('show', 'open', 'locked', 'unmatched');
+        openCards[1].classList.remove('show', 'open', 'locked', 'unmatched');
+        openCards = [];
+      }, 1000);
+    }
+    //showCard(openCards[0]);
+    //showCard(openCards[1]);
+  }
+  console.log(openCards);
+}
 
 // Create showCard function
 let showCard = function() {
@@ -52,7 +76,12 @@ let showCard = function() {
 // Loop through and apply an event listender to each card
 allCards.forEach(function(card) {
   card.addEventListener('click', showCard);
+  card.addEventListener('click', openedCards);
 });
+
+
+
+
 
 
 
