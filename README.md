@@ -41,3 +41,4 @@ Share and Share alike,  No License file.
 * Ahmed, my Udacity mentor, was invaluable in keeping me motivated and directing in the right direction when I hit road blocks.
 * [Sandra Israel-Ovirih](https://scotch.io/tutorials/how-to-build-a-memory-matching-game-in-javascript)'s blog post helped get out of a couple jams.
 * Used Daniel Eden's [animate.css](https://daneden.github.io/animate.css/) to animate the cards when clicked  
+* Used model functionality from [W3Schools](https://www.w3schools.com/howto/howto_css_modals.asp)

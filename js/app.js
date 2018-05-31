@@ -7,13 +7,6 @@ const deck = document.querySelector(".deck");
 // Reset Button
 const restart = document.querySelector(".restart");
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -25,7 +18,6 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
     return array;
 }
 
@@ -74,23 +66,13 @@ function starRating(num) {
 let updateMoves = function() {
   document.getElementById('moves').innerHTML = movesCounter;
 }
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
 
- // Start  timerInstance
- var timer = new Timer();
- timer.start();
- timer.addEventListener('secondsUpdated', function (e) {
-     $('#clock').html(timer.getTimeValues().toString());
- });
+// Start  timerInstance
+var timer = new Timer();
+timer.start();
+timer.addEventListener('secondsUpdated', function (e) {
+  $('#clock').html(timer.getTimeValues().toString());
+});
 
 // Array to hold currently open cards
 var openCards = [];
@@ -105,11 +87,11 @@ function startGame() {
   allCards = shuffle(allCards);
   // remove all exisiting classes from each card
   for (var i = 0; i < allCards.length; i++){
-      deck.innerHTML = '';
-      [].forEach.call(allCards, function(item) {
-          deck.appendChild(item);
-      });
-      allCards[i].classList.remove('show', 'open', 'match', 'locked', 'unmatched', 'rubberBand', 'shake');
+    deck.innerHTML = '';
+    [].forEach.call(allCards, function(item) {
+      deck.appendChild(item);
+    });
+    allCards[i].classList.remove('show', 'open', 'match', 'locked', 'unmatched', 'rubberBand', 'shake');
   }
   // reset open cards Array
   openCards = [];
@@ -124,11 +106,49 @@ function startGame() {
 
 }
 
+//------------------------------------------------
+//TODO TEST CODE REMOVE PRIOR TO PRODUCTION
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+    gameOverModal();
+}
+//-----------------------------------------------
+
+
+// Game Over Modal
+// Used modal from W3Schools https://www.w3schools.com/howto/howto_css_modals.asp
+function gameOverModal() {
+  // Get timer value in minutes and seconds
+  timer.addEventListener('secondsUpdated', function (e) {
+    $('#gettingTotalValuesExample .minutes').html(timer.getTotalTimeValues().minutes);
+    $('#gettingValuesExample .seconds').html(timer.getTimeValues().seconds);
+  });
+  // Get the modal
+  var modal = document.getElementById('gameOverModal');
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  // When the user wins the game, open the modal
+  modal.style.display = "block";
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+}
+
 // Function to check if the game is over
 function isGameOver() {
   if (correctMoves >= (allCards.length / 2)) {
     console.log("Game Over!");
     timer.pause();
+    gameOverModal();
     return true;
   } else {
     return false;
@@ -142,7 +162,6 @@ let matched = function() {
   correctMoves++;
   openCards = [];
 }
-
 
 // unmatched cards
 let unmatched = function() {
