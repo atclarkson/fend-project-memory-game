@@ -124,10 +124,19 @@ function startGame() {
 
 }
 
+// Function to check if the game is over
+function isGameOver() {
+  if (correctMoves >= (allCards.length / 2)) {
+    console.log("Game Over!");
+    timer.pause();
+    return true;
+  } else {
+    return false;
+  }
+}
 
 // matched cards
 let matched = function() {
-  console.log("match");
   openCards[0].classList.add("match");
   openCards[1].classList.add("match");
   correctMoves++;
@@ -137,7 +146,6 @@ let matched = function() {
 
 // unmatched cards
 let unmatched = function() {
-  console.log("No Match");
   openCards[0].classList.add("unmatched");
   openCards[1].classList.add("unmatched");
   allCards.forEach(function(card) {
@@ -164,8 +172,12 @@ let openedCards = function() {
     }
     movesCounter++;
   }
+  // Update the moves counter
   updateMoves();
+  // update the star rating
   starRating(correctMoves / movesCounter);
+  // Check if the game is over
+  isGameOver();
 }
 
 // Create showCard function
