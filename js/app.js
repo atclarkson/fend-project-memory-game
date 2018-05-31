@@ -28,64 +28,30 @@ function starRating(num) {
   let stars = document.getElementsByClassName('star');
   if (num > .50) {
     //3 stars
-    stars[0].classList.add('fa-star');
-    stars[1].classList.add('fa-star');
-    stars[2].classList.add('fa-star');
-    stars[0].classList.remove('fa-star-o');
-    stars[1].classList.remove('fa-star-o');
-    stars[2].classList.remove('fa-star-o');
-
-    stars[3].classList.add('fa-star');
-    stars[4].classList.add('fa-star');
-    stars[5].classList.add('fa-star');
-    stars[3].classList.remove('fa-star-o');
-    stars[4].classList.remove('fa-star-o');
-    stars[5].classList.remove('fa-star-o');
+    for(star of stars) {
+      star.classList.replace('fa-star-o','fa-star');
+    }
   } else if (num > .25) {
     //2 stars
-    stars[0].classList.add('fa-star');
-    stars[1].classList.add('fa-star');
-    stars[2].classList.add('fa-star-o');
-    stars[0].classList.remove('fa-star-o');
-    stars[1].classList.remove('fa-star-o');
-    stars[2].classList.remove('fa-star');
-
-    stars[3].classList.add('fa-star');
-    stars[4].classList.add('fa-star');
-    stars[5].classList.add('fa-star-o');
-    stars[3].classList.remove('fa-star-o');
-    stars[4].classList.remove('fa-star-o');
-    stars[5].classList.remove('fa-star');
+    stars[0].classList.replace('fa-star-o','fa-star');
+    stars[1].classList.replace('fa-star-o','fa-star');
+    stars[2].classList.replace('fa-star','fa-star-o');
+    stars[3].classList.replace('fa-star-o','fa-star');
+    stars[4].classList.replace('fa-star-o','fa-star');
+    stars[5].classList.replace('fa-star','fa-star-o');
   } else if (num > .10){
     //1 star
-    stars[0].classList.add('fa-star');
-    stars[1].classList.add('fa-star-o');
-    stars[2].classList.add('fa-star-o');
-    stars[0].classList.remove('fa-star-o');
-    stars[1].classList.remove('fa-star');
-    stars[2].classList.remove('fa-star');
-
-    stars[3].classList.add('fa-star');
-    stars[4].classList.add('fa-star-o');
-    stars[5].classList.add('fa-star-o');
-    stars[3].classList.remove('fa-star-o');
-    stars[4].classList.remove('fa-star');
-    stars[5].classList.remove('fa-star');
+    stars[0].classList.replace('fa-star-o','fa-star');
+    stars[1].classList.replace('fa-star','fa-star-o');
+    stars[2].classList.replace('fa-star','fa-star-o');
+    stars[3].classList.replace('fa-star-o','fa-star');
+    stars[4].classList.replace('fa-star','fa-star-o');
+    stars[5].classList.replace('fa-star','fa-star-o');
   } else {
     //0 stars
-    stars[0].classList.add('fa-star-o');
-    stars[1].classList.add('fa-star-o');
-    stars[2].classList.add('fa-star-o');
-    stars[0].classList.remove('fa-star');
-    stars[1].classList.remove('fa-star');
-    stars[2].classList.remove('fa-star');
-
-    stars[3].classList.add('fa-star-o');
-    stars[4].classList.add('fa-star-o');
-    stars[5].classList.add('fa-star-o');
-    stars[3].classList.remove('fa-star');
-    stars[4].classList.remove('fa-star');
-    stars[5].classList.remove('fa-star');
+    for(star of stars) {
+      star.classList.replace('fa-star','fa-star-o');
+    }
   }
 }
 
