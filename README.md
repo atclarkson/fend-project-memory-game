@@ -24,10 +24,6 @@ This is a personal portfolio project for a course. Therefore, I most likely will
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
 ## Author
 
 * **Adam Clarkson** - *Initial work* - [atclarkson](https://github.com/atclarkson)
