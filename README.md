@@ -3,24 +3,40 @@
 ## Table of Contents
 
 * [Instructions](#instructions)
+* [Dependancies](#dependancies)
 * [Contributing](#contributing)
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+Memory Game project for Udacity Front End Nano Degree (FEND) program.  Used udacity starter code to get started.  Focused mainly on functionality, less on design.
 
-To get started, open `js/app.js` and start building out the app's functionality
+Detailed Project rubric can be found [here](https://review.udacity.com/#!/rubrics/591/view).
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
-
-### Dependancies
-Using EasyTimer.js for timing.  install using npm
-``` bash
+## Dependancies
+Using [EasyTimer.js](https://albert-gonzalez.github.io/easytimer.js/) for timing.  Install using npm:
+```
 npm install easytimer.js --save
 ```
 
 ## Contributing
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+This is a personal portfolio project for a course. Therefore, I most likely will not accept pull requests.
 
 For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Author
+
+* **Adam Clarkson** - *Initial work* - [atclarkson](https://github.com/atclarkson)
+
+## License
+
+Share and Share alike,  No License file.
+
+## Acknowledgments
+
+* Ahmed, my Udacity mentor, was invaluable in keeping me motivated and directing in the right direction when I hit road blocks.
+* [Sandra Israel-Ovirih](https://scotch.io/tutorials/how-to-build-a-memory-matching-game-in-javascript)'s blog post helped get out of a couple jams.
