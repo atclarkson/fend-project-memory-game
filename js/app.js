@@ -1,7 +1,10 @@
-/*
- * Create a list that holds all of your cards
- */
-
+// Hold a list of all cards
+let allCards = document.querySelectorAll('.card');
+console.log(allCards);
+let card = document.getElementsByClassName("card");
+let cards = [...card]
+console.log(card);
+console.log(cards);
 
 /*
  * Display the cards on the page
@@ -26,25 +29,41 @@ function shuffle(array) {
 }
 
 // Get list of Star classes
-let stars = document.getElementsByClassName('fa-star');
-
+let stars = document.getElementsByClassName('star');
+console.log(stars);
 function starRating(num) {
   if (num > .50) {
     //3 stars
-    stars[0].classList.remove('starOff');
-    stars[1].classList.remove('starOff');
-    stars[2].classList.remove('starOff');
+    stars[0].classList.add('fa-star');
+    stars[1].classList.add('fa-star');
+    stars[2].classList.add('fa-star');
+    stars[0].classList.remove('fa-star-o');
+    stars[1].classList.remove('fa-star-o');
+    stars[2].classList.remove('fa-star-o');
   } else if (num > .25) {
     //2 stars
-    stars[0].classList.remove('starOff');
-    stars[1].classList.remove('starOff');
-    stars[2].classList.add('starOff');
-  } else {
+    stars[0].classList.add('fa-star');
+    stars[1].classList.add('fa-star');
+    stars[2].classList.add('fa-star-o');
+    stars[0].classList.remove('fa-star-o');
+    stars[1].classList.remove('fa-star-o');
+    stars[2].classList.remove('fa-star');
+  } else if (num > .10){
     //1 star
-    stars[0].classList.remove('starOff');
-    stars[1].classList.add('starOff');
-    stars[2].classList.add('starOff');
-  }
+    stars[0].classList.add('fa-star');
+    stars[1].classList.add('fa-star-o');
+    stars[2].classList.add('fa-star-o');
+    stars[0].classList.remove('fa-star-o');
+    stars[1].classList.remove('fa-star');
+    stars[2].classList.remove('fa-star');
+  } else {
+    //0 stars
+    stars[0].classList.add('fa-star-o');
+    stars[1].classList.add('fa-star-o');
+    stars[2].classList.add('fa-star-o');
+    stars[0].classList.remove('fa-star');
+    stars[1].classList.remove('fa-star');
+    stars[2].classList.remove('fa-star');
 }
 
 /*
@@ -58,8 +77,6 @@ function starRating(num) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-// Hold a list of all cards
-let allCards = document.querySelectorAll('.card');
 // Array to hold currently open cards
 var openCards = [];
 // Mover counter
@@ -117,7 +134,7 @@ let showCard = function() {
   this.classList.toggle('locked');
 };
 
-// Loop through and apply an event listender to each card
+// Loop through and apply an event listener to each card
 allCards.forEach(function(card) {
   card.addEventListener('click', showCard);
   card.addEventListener('click', openedCards);
