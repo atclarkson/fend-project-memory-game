@@ -64,6 +64,7 @@ function starRating(num) {
     stars[0].classList.remove('fa-star');
     stars[1].classList.remove('fa-star');
     stars[2].classList.remove('fa-star');
+  }
 }
 
 /*
