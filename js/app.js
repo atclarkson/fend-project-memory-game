@@ -41,6 +41,9 @@ function shuffle(array) {
 let allCards = document.querySelectorAll('.card');
 // Array to hold currently open cards
 var openCards = [];
+// Mover counter
+let numMoves = 0;
+
 
 // matched cards
 let matched = function() {
@@ -62,6 +65,13 @@ let unmatched = function() {
   }, 1000);
 }
 
+// Update move counter
+let updateMoves = function() {
+  document.getElementById('moves').innerHTML = numMoves;
+}
+
+
+// Add clicked cards to array and check if the cards match or not
 let openedCards = function() {
   openCards.push(this);
   if (openCards.length == 2) {
@@ -70,8 +80,9 @@ let openedCards = function() {
     } else {
       unmatched();
     }
+    numMoves++;
   }
-  console.log(openCards);
+  updateMoves();
 }
 
 // Create showCard function
@@ -86,30 +97,3 @@ allCards.forEach(function(card) {
   card.addEventListener('click', showCard);
   card.addEventListener('click', openedCards);
 });
-
-
-
-
-
-
-
-//   card.addEventListener('click', function(e) {
-//     // SHow a card when it is clickes
-//     card.classList.add('show', 'open');
-//     console.log(card);
-//     openCards.push(card);
-//     // Check if 2 cards have been clicked
-//     if (openCards.length === 2) {
-//       console.log(openCards[0].childNodes[1]);
-//       console.log(openCards[1].childNodes[1]);
-//       //Check if the two clicked cards are equal
-//       if (openCards[0].innerHTML === openCards[1].innerHTML) {
-//         openCards.[0].classList.add('match'));
-//         console.log("fire");
-//       }
-//       //openCards.forEach(card.classList.remove('show', 'open'));
-//       openCards = [];
-//       console.log(openCards);
-//     }
-//   })
-// });
