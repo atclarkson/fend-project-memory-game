@@ -137,8 +137,8 @@ function isGameOver() {
 
 // matched cards
 let matched = function() {
-  openCards[0].classList.add("match");
-  openCards[1].classList.add("match");
+  openCards[0].classList.add('match', 'rubberBand');
+  openCards[1].classList.add('match', 'rubberBand');
   correctMoves++;
   openCards = [];
 }
@@ -146,14 +146,14 @@ let matched = function() {
 
 // unmatched cards
 let unmatched = function() {
-  openCards[0].classList.add("unmatched");
-  openCards[1].classList.add("unmatched");
+  openCards[0].classList.add('unmatched', 'shake');
+  openCards[1].classList.add('unmatched', 'shake');
   allCards.forEach(function(card) {
     card.classList.add('disabled');
   });
   setTimeout(function(){
-    openCards[0].classList.remove('show', 'open', 'locked', 'unmatched');
-    openCards[1].classList.remove('show', 'open', 'locked', 'unmatched');
+    openCards[0].classList.remove('show', 'open', 'locked', 'unmatched', 'shake');
+    openCards[1].classList.remove('show', 'open', 'locked', 'unmatched', 'shake');
     allCards.forEach(function(card) {
       card.classList.remove('disabled');
     });
