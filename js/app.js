@@ -109,7 +109,7 @@ function startGame() {
       [].forEach.call(allCards, function(item) {
           deck.appendChild(item);
       });
-      allCards[i].classList.remove('show', 'open', 'match', 'locked', 'unmatched');
+      allCards[i].classList.remove('show', 'open', 'match', 'locked', 'unmatched', 'rubberBand', 'shake');
   }
   // reset open cards Array
   openCards = [];
