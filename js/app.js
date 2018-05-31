@@ -107,13 +107,13 @@ function startGame() {
 }
 
 //------------------------------------------------
-//TODO TEST CODE REMOVE PRIOR TO PRODUCTION
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-// When the user clicks the button, open the modal
-btn.onclick = function() {
-    gameOverModal();
-}
+// //TODO TEST CODE REMOVE PRIOR TO PRODUCTION
+// // Get the button that opens the modal
+// var btn = document.getElementById("myBtn");
+// // When the user clicks the button, open the modal
+// btn.onclick = function() {
+//     gameOverModal();
+// }
 //-----------------------------------------------
 
 
@@ -140,6 +140,13 @@ function gameOverModal() {
     if (event.target == modal) {
       modal.style.display = "none";
     }
+  }
+  // Get the button to restart the game
+  var playAgainBtn = document.getElementById("playAgainBtn");
+  // When the user clicks the button, restart the game
+  playAgainBtn.onclick = function() {
+      modal.style.display = "none";
+      startGame();
   }
 }
 
@@ -212,5 +219,5 @@ allCards.forEach(function(card) {
   card.addEventListener('click', openedCards);
 });
 
-// Event listend for restart
+// Event listener for restart
 restart.addEventListener('click', startGame);
