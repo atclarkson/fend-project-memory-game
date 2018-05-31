@@ -42,26 +42,34 @@ let allCards = document.querySelectorAll('.card');
 // Array to hold currently open cards
 var openCards = [];
 
+// matched cards
+let matched = function() {
+  console.log("match");
+  openCards[0].classList.add("match");
+  openCards[1].classList.add("match");
+  openCards = [];
+}
+
+// unmatched cards
+let unmatched = function() {
+  console.log("No Match");
+  openCards[0].classList.add("unmatched");
+  openCards[1].classList.add("unmatched");
+  setTimeout(function(){
+    openCards[0].classList.remove('show', 'open', 'locked', 'unmatched');
+    openCards[1].classList.remove('show', 'open', 'locked', 'unmatched');
+    openCards = [];
+  }, 1000);
+}
+
 let openedCards = function() {
   openCards.push(this);
   if (openCards.length == 2) {
     if (openCards[0].innerHTML == openCards[1].innerHTML) {
-      console.log("match");
-      openCards[0].classList.add("match");
-      openCards[1].classList.add("match");
-      openCards = [];
+      matched();
     } else {
-      console.log("No Match");
-      openCards[0].classList.add("unmatched");
-      openCards[1].classList.add("unmatched");
-      setTimeout(function(){
-        openCards[0].classList.remove('show', 'open', 'locked', 'unmatched');
-        openCards[1].classList.remove('show', 'open', 'locked', 'unmatched');
-        openCards = [];
-      }, 1000);
+      unmatched();
     }
-    //showCard(openCards[0]);
-    //showCard(openCards[1]);
   }
   console.log(openCards);
 }
