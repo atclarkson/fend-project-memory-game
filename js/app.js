@@ -21,8 +21,6 @@ function shuffle(array) {
     return array;
 }
 
-
-
 // Star rating function based on ratio of correct matches to incorrect matches.
 // This is a mess and should be refactored at some point.
 function starRating(num) {
@@ -135,17 +133,6 @@ function startGame() {
 
 }
 
-//------------------------------------------------
-// //TODO TEST CODE REMOVE PRIOR TO PRODUCTION
-// // Get the button that opens the modal
-// var btn = document.getElementById("myBtn");
-// // When the user clicks the button, open the modal
-// btn.onclick = function() {
-//     gameOverModal();
-// }
-//-----------------------------------------------
-
-
 // Game Over Modal
 // Used modal from W3Schools https://www.w3schools.com/howto/howto_css_modals.asp
 function gameOverModal() {
@@ -197,22 +184,28 @@ function isGameOver() {
 
 // matched cards
 let matched = function() {
-  openCards[0].classList.add('match', 'rubberBand');
-  openCards[1].classList.add('match', 'rubberBand');
+  // Loop through face up cards and give them matched classes
+  for(card of openCards) {
+    card.classList.add('match', 'rubberBand');
+  }
   correctMoves++;
   openCards = [];
 }
 
 // unmatched cards
 let unmatched = function() {
-  openCards[0].classList.add('unmatched', 'shake');
-  openCards[1].classList.add('unmatched', 'shake');
+  // Loop through face up cards
+  for(card of openCards){
+    card.classList.add('unmatched', 'shake');
+  }
   allCards.forEach(function(card) {
     card.classList.add('disabled');
   });
   setTimeout(function(){
-    openCards[0].classList.remove('show', 'open', 'locked', 'unmatched', 'shake');
-    openCards[1].classList.remove('show', 'open', 'locked', 'unmatched', 'shake');
+    // loop through face up cards and remove all the modified classes
+    for(card of openCards){
+      card.classList.remove('show', 'open', 'locked', 'unmatched', 'shake');
+    }
     allCards.forEach(function(card) {
       card.classList.remove('disabled');
     });
