@@ -4,6 +4,8 @@ let allCards = [...card]
 // deck of all cards in game
 const deck = document.querySelector(".deck");
 
+// Reset Button
+const restart = document.querySelector(".restart");
 
 /*
  * Display the cards on the page
@@ -96,7 +98,7 @@ function startGame() {
       [].forEach.call(allCards, function(item) {
           deck.appendChild(item);
       });
-      allCards[i].classList.remove('show', 'open', 'match', 'disabled');
+      allCards[i].classList.remove('show', 'open', 'match', 'locked');
   }
   // reset open cards Array
   openCards = [];
@@ -105,7 +107,6 @@ function startGame() {
   correctMoves = 0;
   // reset star starRating
   starRating(100);
-
 }
 
 
@@ -164,3 +165,6 @@ allCards.forEach(function(card) {
   card.addEventListener('click', showCard);
   card.addEventListener('click', openedCards);
 });
+
+// Event listend for restart
+restart.addEventListener('click', startGame);
