@@ -70,6 +70,10 @@ function starRating(num) {
   }
 }
 
+// Update move counter
+let updateMoves = function() {
+  document.getElementById('moves').innerHTML = movesCounter;
+}
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -112,6 +116,7 @@ function startGame() {
   // reset moves counter to 0
   movesCounter = 0;
   correctMoves = 0;
+  updateMoves();
   // reset star starRating
   starRating(100);
   // reset timer
@@ -141,12 +146,6 @@ let unmatched = function() {
     openCards = [];
   }, 1000);
 }
-
-// Update move counter
-let updateMoves = function() {
-  document.getElementById('moves').innerHTML = movesCounter;
-}
-
 
 // Add clicked cards to array and check if the cards match or not
 let openedCards = function() {
