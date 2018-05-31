@@ -140,9 +140,15 @@ let unmatched = function() {
   console.log("No Match");
   openCards[0].classList.add("unmatched");
   openCards[1].classList.add("unmatched");
+  allCards.forEach(function(card) {
+    card.classList.add('disabled');
+  });
   setTimeout(function(){
     openCards[0].classList.remove('show', 'open', 'locked', 'unmatched');
     openCards[1].classList.remove('show', 'open', 'locked', 'unmatched');
+    allCards.forEach(function(card) {
+      card.classList.remove('disabled');
+    });
     openCards = [];
   }, 1000);
 }

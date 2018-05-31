@@ -34,6 +34,13 @@ h1 {
 }
 
 /*
+ * Lock out user form picking more than two cards
+ */
+.disabled {
+  pointer-events: none;
+}
+
+/*
  * Styles for the deck of cards
  */
 
