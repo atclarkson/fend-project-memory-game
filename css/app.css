@@ -95,6 +95,7 @@ h1 {
     text-align: left;
     width: 345px;
     margin-bottom: 10px;
+    display: flex;
 }
 
 .score-panel .stars {
@@ -112,6 +113,12 @@ h1 {
 .score-panel .stars li {
     list-style: none;
     display: inline-block;
+}
+
+#clock {
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .score-panel .restart {

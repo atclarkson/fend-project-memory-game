@@ -81,6 +81,13 @@ function starRating(num) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+ // Start  timerInstance
+ var timer = new Timer();
+ timer.start();
+ timer.addEventListener('secondsUpdated', function (e) {
+     $('#clock').html(timer.getTimeValues().toString());
+ });
+
 // Array to hold currently open cards
 var openCards = [];
 // Mover counter
@@ -98,7 +105,7 @@ function startGame() {
       [].forEach.call(allCards, function(item) {
           deck.appendChild(item);
       });
-      allCards[i].classList.remove('show', 'open', 'match', 'locked');
+      allCards[i].classList.remove('show', 'open', 'match', 'locked', 'unmatched');
   }
   // reset open cards Array
   openCards = [];
@@ -107,6 +114,9 @@ function startGame() {
   correctMoves = 0;
   // reset star starRating
   starRating(100);
+  // reset timer
+  timer.reset();
+
 }
 
 
