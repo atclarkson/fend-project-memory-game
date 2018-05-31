@@ -21,12 +21,13 @@ function shuffle(array) {
     return array;
 }
 
-// Get list of Star classes
-let stars = document.getElementsByClassName('star');
+
 
 // Star rating function based on ratio of correct matches to incorrect matches.
 // This is a mess and should be refactored at some point.
 function starRating(num) {
+  // Get list of Star classes
+  let stars = document.getElementsByClassName('star');
   if (num > .50) {
     //3 stars
     stars[0].classList.add('fa-star');
@@ -35,6 +36,13 @@ function starRating(num) {
     stars[0].classList.remove('fa-star-o');
     stars[1].classList.remove('fa-star-o');
     stars[2].classList.remove('fa-star-o');
+
+    stars[3].classList.add('fa-star');
+    stars[4].classList.add('fa-star');
+    stars[5].classList.add('fa-star');
+    stars[3].classList.remove('fa-star-o');
+    stars[4].classList.remove('fa-star-o');
+    stars[5].classList.remove('fa-star-o');
   } else if (num > .25) {
     //2 stars
     stars[0].classList.add('fa-star');
@@ -43,6 +51,13 @@ function starRating(num) {
     stars[0].classList.remove('fa-star-o');
     stars[1].classList.remove('fa-star-o');
     stars[2].classList.remove('fa-star');
+
+    stars[3].classList.add('fa-star');
+    stars[4].classList.add('fa-star');
+    stars[5].classList.add('fa-star-o');
+    stars[3].classList.remove('fa-star-o');
+    stars[4].classList.remove('fa-star-o');
+    stars[5].classList.remove('fa-star');
   } else if (num > .10){
     //1 star
     stars[0].classList.add('fa-star');
@@ -51,6 +66,13 @@ function starRating(num) {
     stars[0].classList.remove('fa-star-o');
     stars[1].classList.remove('fa-star');
     stars[2].classList.remove('fa-star');
+
+    stars[3].classList.add('fa-star');
+    stars[4].classList.add('fa-star-o');
+    stars[5].classList.add('fa-star-o');
+    stars[3].classList.remove('fa-star-o');
+    stars[4].classList.remove('fa-star');
+    stars[5].classList.remove('fa-star');
   } else {
     //0 stars
     stars[0].classList.add('fa-star-o');
@@ -59,6 +81,13 @@ function starRating(num) {
     stars[0].classList.remove('fa-star');
     stars[1].classList.remove('fa-star');
     stars[2].classList.remove('fa-star');
+
+    stars[3].classList.add('fa-star-o');
+    stars[4].classList.add('fa-star-o');
+    stars[5].classList.add('fa-star-o');
+    stars[3].classList.remove('fa-star');
+    stars[4].classList.remove('fa-star');
+    stars[5].classList.remove('fa-star');
   }
 }
 
@@ -120,17 +149,21 @@ function startGame() {
 // Game Over Modal
 // Used modal from W3Schools https://www.w3schools.com/howto/howto_css_modals.asp
 function gameOverModal() {
-  // Get timer value in minutes and seconds
-  timer.addEventListener('secondsUpdated', function (e) {
-    $('#gettingTotalValuesExample .minutes').html(timer.getTotalTimeValues().minutes);
-    $('#gettingValuesExample .seconds').html(timer.getTimeValues().seconds);
-  });
+  // Get winning time
+  $('#winningTime .minutes').html(timer.getTotalTimeValues().minutes);
+  $('#winningTime .seconds').html(timer.getTimeValues().seconds);
   // Get the modal
   var modal = document.getElementById('gameOverModal');
   // Get the <span> element that closes the modal
   var span = document.getElementsByClassName("close")[0];
   // When the user wins the game, open the modal
   modal.style.display = "block";
+
+  // update the star rating
+  //let stars = modal.getElementsByClassName('star');
+  //console.log(stars);
+  starRating(correctMoves / movesCounter);
+
   // When the user clicks on <span> (x), close the modal
   span.onclick = function() {
     modal.style.display = "none";
@@ -154,8 +187,8 @@ function gameOverModal() {
 function isGameOver() {
   if (correctMoves >= (allCards.length / 2)) {
     console.log("Game Over!");
-    timer.pause();
     gameOverModal();
+    timer.stop();
     return true;
   } else {
     return false;
