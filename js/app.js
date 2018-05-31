@@ -25,6 +25,27 @@ function shuffle(array) {
     return array;
 }
 
+// Get list of Star classes
+let stars = document.getElementsByClassName('fa-star');
+
+function starRating(num) {
+  if (num > .50) {
+    //3 stars
+    stars[0].classList.remove('starOff');
+    stars[1].classList.remove('starOff');
+    stars[2].classList.remove('starOff');
+  } else if (num > .25) {
+    //2 stars
+    stars[0].classList.remove('starOff');
+    stars[1].classList.remove('starOff');
+    stars[2].classList.add('starOff');
+  } else {
+    //1 star
+    stars[0].classList.remove('starOff');
+    stars[1].classList.add('starOff');
+    stars[2].classList.add('starOff');
+  }
+}
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -43,13 +64,16 @@ let allCards = document.querySelectorAll('.card');
 var openCards = [];
 // Mover counter
 let numMoves = 0;
-
+let correctMoves = 0;
+starRating(correctMoves / numMoves);
+console.log(correctMoves / numMoves);
 
 // matched cards
 let matched = function() {
   console.log("match");
   openCards[0].classList.add("match");
   openCards[1].classList.add("match");
+  correctMoves++;
   openCards = [];
 }
 
@@ -83,6 +107,7 @@ let openedCards = function() {
     numMoves++;
   }
   updateMoves();
+  starRating(correctMoves / numMoves);
 }
 
 // Create showCard function
