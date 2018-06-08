@@ -5,10 +5,15 @@
 * [Instructions](#instructions)
 * [Dependancies](#dependancies)
 * [Contributing](#contributing)
+* [Author](#author)
+* [License](#license)
+* [Acknowledgments](#acknowledgments)
 
 ## Instructions
 
 Memory Game project for Udacity Front End Nano Degree (FEND) program.  Used udacity starter code to get started.  Focused mainly on functionality, less on design.
+
+Working version of game [here](https://atclarkson.github.io/fend-project-memory-game/)
 
 Detailed Project rubric can be found [here](https://review.udacity.com/#!/rubrics/591/view).
 
